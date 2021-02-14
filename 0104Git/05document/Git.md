@@ -30,6 +30,9 @@ git官网（[下载Git](https://git-scm.com/download/win)）
 
 
 解压到哪个文件夹
+
+
+
 ![在这里插入图片描述](Git.assets/20200707104851507.png)
 
 
@@ -734,13 +737,13 @@ git clone git@github.com:smuyyh/BookReader.git
 
 创建并推送开发分支（dev）到远程库
 
-#### 创建并切换dev分支
+##### 创建并切换dev分支
 
 ```sh
 git checkout -b dev
 ```
 
-#### 修改文件
+##### 修改文件
 
 在该分支下修改我们的 Django 项目中的任意文件
 
@@ -761,7 +764,7 @@ vim settings.py
  93 }
 ```
 
-#### 提交修改内容
+##### 提交修改内容
 
 将修改添加到暂存区，并进行提交
 
@@ -770,13 +773,13 @@ git add settings.py
 git commit -m "修改数据库连接"
 ```
 
-#### 切换回master分支
+##### 切换回master分支
 
 ```sh
 git checkout master
 ```
 
-#### 推送到远程仓库
+##### 推送到远程仓库
 
 使用git push命令将分支dev推送到远程仓库
 
@@ -788,7 +791,7 @@ git push origin dev
 
 ==============================分割线:以上是单人开发时，以下是多人协同开发用到的内容==========================================
 
-#### 远程仓库克隆到本地
+##### 远程仓库克隆到本地
 
 我们现在模拟另外开发组一个同事，首先在本地创建一个仓库，将远程仓库克隆到本地。
 
@@ -796,7 +799,7 @@ git push origin dev
 git clone git@github.com:FatPuffer/CTFD.git
 ```
 
-#### 设置跟踪远程分支
+##### 设置跟踪远程分支
 
 我们要在dev分支上做开发，就必须把远程的origin的dev分支创建到本地来，于是可以使用命令创建本地dev分支，为了方便我们推送，还会将本地分支设置为跟踪远程分支，这样在推送时就可以直接使用`git push`命令，不需要再使用`git push origin dev`
 
@@ -806,7 +809,7 @@ git checkout -b dev origin/dev
 git branch --set-upstream-to origin/dev dev
 ```
 
-#### 进行开发
+##### 进行开发
 
 加入创建一个用户应用
 
@@ -815,7 +818,7 @@ cd CTFD
 python3 manage.py startapp user
 ```
 
-#### 提交修改内容
+##### 提交修改内容
 
  将修改添加到暂存区，并进行提交
 
@@ -824,7 +827,7 @@ git add CTFD/user
 git commit -m "创建用户应用"
 ```
 
-#### 推送
+##### 推送
 
 将我们本地dev分支所做的修改推送到远程dev分支即可
 
@@ -836,7 +839,7 @@ git push
 >
 >解决办法：先用git pull把最新的提交从origin/develop抓下来，然后在本地合并，解决冲突，再推送
 
-#### 远程分支合并
+##### 远程分支合并
 
 在项目开发中，我们都是在`本地dev`分支上进行开发，开发完成后将其推送到`远程dev`分支，远程dev分支保存了所有开发人员提交的记录信息，而`远程master`分支保存的才是我们项目每一阶段的版本形态。也就是说，我们当下所做的提交都保存在了远程dev分支上，那么要怎样才能将远程dev分更新的内容合并到远程master分支，形成一个完整的版本形态。
 
@@ -874,9 +877,9 @@ git push origin master
 
 此时我们再去看一下远程仓库master分支信息，就会发现我们刚刚提交的信息已经被同步到master分支上了。
 
-### GitHub Web页面
+#### GitHub Web页面
 
-#### 创建新分支
+##### 创建新分支
 
    （1）、转到一个新的存储库，例如![img](Git.assets/1175142-20170617205109103-1020047250.png)上；
 
@@ -888,29 +891,45 @@ git push origin master
 
 （3）、在创建好的GitHub资源库的code界面中，左侧有一个Branch:master，这个就是指的分支了，表明当前分支为master分支（主分支）。我们想创建分支了，点一下，在框内输入分支的名字即可创建成功。
 
+
+
 ![img](Git.assets/20181123214913815.jpg)
 
+
+
 创建分支成功，这里我创建的是分支叫dev，那么就会跳转到dev的信息界面
+
+
 
 ![img](Git.assets/20181123225303362.jpg)
 
 分支创建好了，这时候我们可以在主分支或者分支上写一些东西，然后提交
 
-#### 编辑分支内容
+##### 编辑分支内容
 
 首先切换到主分支上，点有上角的的笔的标志，可以编辑文件的内容
 
+
+
 ![img](Git.assets/20181123230846314.jpg)
 
-#### 提交
+##### 提交
 
-然后我们写一些内容并且提交![img](Git.assets/20181201101204372.jpg)![img](Git.assets/20181201101213176.jpg)
+然后我们写一些内容并且提交
+
+
+
+![img](Git.assets/20181201101204372.jpg)![img](Git.assets/20181201101213176.jpg)
+
+
 
 这时候再看代码区域，会发现刚刚提交的内容已经可以看到了
 
+
+
 ![img](Git.assets/20181201101400736.jpg)
 
-#### 对比dev分支和master分支
+##### 对比dev分支和master分支
 
 那，现在切换到dev分支。会看到主分支上提交的内容已经同步到了dev分支，那么这次在dev分支中写一些新的内容，方法与上面master的方法一致。写完提交之后，对比一下现在的dev分支与master主分支的内容，看看有什么区别
 
@@ -918,7 +937,7 @@ git push origin master
 
 可以看到，两个分支上的数据是不一样的，根据更新时间明显dev分支的数据是最新的。那么master主分支就要合并，将dev分支合并到master主分支上。
 
-#### 合并
+##### 合并
 
 可以看到上面有一个 Pull requests，拉取请求，现在要做的就是将dev分支上所有的数据拉取到master分支上。打开 Pull requests
 
@@ -928,15 +947,27 @@ git push origin master
 
 ![img](Git.assets/2018120110252023.jpg)
 
+
+
 两个框，代表的意义为，想要将2号框中的分支的数据合并到1号框中的分支中去。那么，我们肯定不能是从master到master，是要从dev到master，所以，2号框要选择dev分支
+
+
 
 ![img](Git.assets/2018120110275456.jpg)
 
+
+
 看1，对钩的意思就是可以合并，没有冲突。就可以点create pull request，创建一个
+
+
 
 ![img](Git.assets/20181201103017916.jpg)
 
+
+
 这里是填写本次更新的信息，填写完毕之后就可以创建了
+
+
 
 ![img](Git.assets/20181201103111880.jpg)
 
@@ -944,28 +975,28 @@ git push origin master
 
 
 
-### GitHub 软件
+#### GitHub 软件
 
-#### 软件的模样
+##### 软件的模样
 
 上面windows版一般情况是够用了，但是合并分支不是特别方便，我反正是一直没有找到合并分支的按钮（merge），如果需要合并分支，建议下载github desktop，安装包太大传不上来，有需要找我要，安装好的图标是这样的，
 ![在这里插入图片描述](Git.assets/20190115100910292.png)
 
-#### 新建分支
+##### 新建分支
 
 - 打开页面后 点branch——create branch 就可建立新的分支，比如创建了geostar_B分支，然后这个分支新增了个文件叫“B.txt”,如图
   ![在这里插入图片描述](Git.assets/20190115100924984.png)
 
 ![在这里插入图片描述](Git.assets/2019011510093896.png)
 
-#### 同步
+##### 同步
 
 - 然后切换到github desktop会发现changes图标已经检测到我们新增了“B.txt”，此时我们需要先把这个改变提交到geostar_B分支，然后 push origin到云端，这样的话云端也就同步了B分支的信息
   ![在这里插入图片描述](Git.assets/20190115100946656.png)
 
 ![在这里插入图片描述](Git.assets/20190115100952205.png)
 
-#### 合并
+##### 合并
 
 然后B分支和主分支做合并，点击Branch ——merge to current branch 会弹出一个窗口，如下图，选中geostar_B分支，然后点击merge to master，然后就会回到主界面，此时只是在本地合并了，仍然要记得 push origin到云端，这样才算真正的合并B到master完成
 ![在这里插入图片描述](Git.assets/20190115101001267.png)
@@ -974,7 +1005,7 @@ git push origin master
 
 ![在这里插入图片描述](Git.assets/20190115101016380.png)
 
-#### 验证
+##### 验证
 
 验证B分支和master是否相同，点击Branch —— Compare on Github，就会弹到web，出现如下界面说明B分支和master此时完全一致
 
